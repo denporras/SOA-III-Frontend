@@ -12,18 +12,20 @@ import {
   dimensionsDevice
 } from '../../styles'
 
-import IconUser from '../../../assets/user.png'
+import IconName from '../../../assets/name.png'
 import IconEmail from '../../../assets/email.png'
+import IconUser from '../../../assets/user.png'
 import IconLocked from '../../../assets/locked.png'
 
 import Input from '../../components/login-components/logininput.js'
 import LoginButton from '../../components/login-components/loginbutton'
+import console from 'console'
 
 export default class RegisterScreen extends React.Component {
   static navigationOptions = {
     title: 'Register',
     headerStyle: {
-      backgroundColor: colors.primary1
+      backgroundColor: colors.primary2
     },
     headerTintColor: colors.secondary1
   }
@@ -88,7 +90,8 @@ export default class RegisterScreen extends React.Component {
       // console.log(json)
       return true
     } catch (error) {
-      alert(error)
+      //alert(error)
+      return false
     }
   }
 
@@ -98,7 +101,7 @@ export default class RegisterScreen extends React.Component {
         <View style={styles.image}></View>
         <KeyboardAvoidingView behavior="padding" style={styles.container}>
           <Input
-            source={IconUser}
+            source={IconName}
             placeholder="Full name"
             autoCapitalize={'none'}
             returnKeyType={'done'}
