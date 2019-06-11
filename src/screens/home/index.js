@@ -13,16 +13,23 @@ import Front1 from '../../../assets/front.jpg'
 import Front2 from '../../../assets/front-2.jpg'
 import Front3 from '../../../assets/front-3.jpg'
 import Front4 from '../../../assets/front-4.jpg'
+import IconHome from '../../../assets/home.png'
+
+
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
-    drawerLabel: 'Home',
-    drawerIcon: ({ tintColor }) => (
-      <Image
-        source={require('../../../assets/email.png')}
-        style={[styles.icon, { tintColor: tintColor }]}
-      />
+    drawerLabel: () => (
+      <Text style={styles.text}>
+        Home
+      </Text>
     ),
+    drawerIcon: () => (
+      <Image
+        source={IconHome}
+        style={[styles.icon, { tintColor: colors.black }]}
+      />
+    )
   };
 
   // constructor() {
@@ -36,6 +43,7 @@ export default class HomeScreen extends React.Component {
   render() {
     return (
       <ScrollView contentContainerStyle={styles.contentContainer}>
+
         <View style={styles.content}>
           <Image source={Front1} style={styles.image} />
           <Text style={styles.text}>
@@ -66,12 +74,13 @@ export default class HomeScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
+
   contentContainer: {
     alignItems: 'center',
     flexGrow: 1,
     justifyContent: 'center',
     paddingVertical: 30,
-    backgroundColor: colors.primary2
+    backgroundColor: colors.primary1
   },
   content: {
     alignItems: 'center',
@@ -88,11 +97,10 @@ const styles = StyleSheet.create({
     height: 24,
   },
   text: {
-    // justifyContent : 'center',
-    // backgroundColor: 'transparent',
-    // fontWeight: 'bold',
-    textAlign: 'center', // <-- the magic
+    justifyContent: 'center',
+    textAlign: 'center',
     fontWeight: 'bold',
+    color: colors.secondary1,
     fontSize: 18,
     marginTop: 0
   }

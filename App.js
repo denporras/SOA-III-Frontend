@@ -11,13 +11,17 @@ import LoginScreen from './src/screens/login'
 import RegisterScreen from './src/screens/register'
 import HomeScreen from './src/screens/home'
 
+import { colors } from './src/styles'
+
+
 class MyNotificationsScreen extends React.Component {
   static navigationOptions = {
+    title: 'Notificationes',
     drawerLabel: 'Notifications',
     drawerIcon: ({ tintColor }) => (
       <Image
         source={require('./assets/email.png')}
-        style={[styles.icon, {tintColor: tintColor}]}
+        style={[styles.icon, { tintColor: tintColor }]}
       />
     ),
   };
@@ -25,7 +29,7 @@ class MyNotificationsScreen extends React.Component {
   render() {
     return (
       <Button
-        onPress={() => this.props.navigation.goBack()}
+        onPress={() => this.props.navigation.navigate('Login')}
         title="Go back home"
       />
     );
@@ -40,21 +44,30 @@ const styles = StyleSheet.create({
 });
 
 const menu = createDrawerNavigator({
-  Home: {
-    screen: HomeScreen,
-  },
-  Notifications: {
-    screen: MyNotificationsScreen,
-  },
-})
+  Home: { screen: HomeScreen },
+  Notifications: { screen: MyNotificationsScreen, },
+}, {
+    drawerBackgroundColor: colors.primary2
+  }
+)
 
 const App = createStackNavigator({
   Login: { screen: LoginScreen },
   Register: { screen: RegisterScreen },
-  Main: { screen: menu }
+  Main: {
+    screen: menu,
+    navigationOptions: {
+      title: 'El Hotel',
+      headerStyle: {
+        backgroundColor: colors.primary
+      },
+      headerTintColor: colors.secondary1
+    }
+  }
 },
   {
-    initialRouteName: 'Main'
+    initialRouteName: 'Main',
+
   })
 
 export default App

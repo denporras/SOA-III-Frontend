@@ -25,7 +25,7 @@ export default class RegisterScreen extends React.Component {
   static navigationOptions = {
     title: 'Register',
     headerStyle: {
-      backgroundColor: colors.primary2
+      backgroundColor: colors.primary
     },
     headerTintColor: colors.secondary1
   }
@@ -161,7 +161,7 @@ export default class RegisterScreen extends React.Component {
 const styles = StyleSheet.create({
   picture: {
     flex: 1,
-    backgroundColor: colors.primary,
+    backgroundColor: colors.primary1,
     height: null,
     resizeMode: 'cover',
     width: null,
