@@ -19,7 +19,10 @@ const strings = new LocalizedStrings({
     rooms: 'Rooms',
     beds: 'Beds: ',
     bathrooms: 'Bathrooms: ',
-    description: 'Description: '
+    description: 'Description: ',
+    services: 'Services',
+    type: 'Type: ',
+    availability: 'Availability: '
   },
   es: {
     username: 'Usuario',
@@ -39,7 +42,10 @@ const strings = new LocalizedStrings({
     rooms: 'Cuartos',
     beds: 'Camas: ',
     bathrooms: 'Baños: ',
-    description: 'Descripción: '
+    description: 'Descripción: ',
+    services: 'Servicios',
+    type: 'Tipo: ',
+    availability: 'Disponibilidad: '
   }
 });
 export default strings;
