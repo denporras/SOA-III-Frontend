@@ -8,6 +8,8 @@ import RoomScreen from './src/screens/room'
 import DetailRoomScreen from './src/screens/detail-room'
 import ServiceScreen from './src/screens/services'
 import DetailServiceScreen from './src/screens/detail-service'
+import ActivityScreen from './src/screens/activities'
+import DetailActivityScreen from './src/screens/detail-activity'
 
 import { colors } from './src/styles'
 
@@ -18,7 +20,8 @@ const menu = createDrawerNavigator({
   Home: { screen: HomeScreen },
   Settings: { screen: SettingsScreen },
   Rooms: { screen: RoomScreen },
-  Services: { screen: ServiceScreen }
+  Services: { screen: ServiceScreen },
+  Activities: { screen: ActivityScreen }
 }, {
     drawerBackgroundColor: colors.primary2
   }
@@ -29,6 +32,7 @@ const App = createStackNavigator({
   Register: { screen: RegisterScreen },
   RoomDetail: {screen: DetailRoomScreen },
   ServiceDetail: { screen: DetailServiceScreen },
+  ActivityDetail: { screen: DetailActivityScreen },
   Main: {
     screen: menu,
     navigationOptions: {

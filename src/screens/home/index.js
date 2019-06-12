@@ -41,6 +41,7 @@ export default class HomeScreen extends React.Component {
   constructor() {
     super()
     global.languageSelected = strings.getLanguage()
+    global.ipAddress = '192.168.43.47'
   }
 
   render() {

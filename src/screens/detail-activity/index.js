@@ -14,9 +14,9 @@ import strings from '../../components/language'
 
 
 
-export default class DetailServiceScreen extends React.Component {
+export default class DetailActivityScreen extends React.Component {
   static navigationOptions = {
-    title: strings.services,
+    title: strings.activities,
     headerStyle: {
       backgroundColor: colors.primary
     },
@@ -27,31 +27,37 @@ export default class DetailServiceScreen extends React.Component {
     super()
   }
   render() {
-    // const { room } = this.props.navigation.state
-    // console.log(room)
     const { params } = this.props.navigation.state
-    const { service } = params
+    const { activity } = params
     return (
       <ScrollView contentContainerStyle={styles.contentContainer}>
         <View style={styles.content}>
           <View style={styles.columnContainer}>
-            <Text style={styles.text}>{service.name}</Text>
+            <Text style={styles.text}>{activity.name}</Text>
           </View>
-          <Image source={{ uri: `http://${global.ipAddress}:1337${service.photo.url}` }} style={styles.image} />
+          <Image source={{ uri: `http://${global.ipAddress}:1337${activity.photo.url}` }} style={styles.image} />
           <View style={styles.rowContainer}>
             <Text style={styles.textLabel}>
-              {strings.type}
+              {strings.vendor}
             </Text>
             <Text style={styles.text}>
-              {service.type}
+              {activity.vendor}
             </Text>
           </View>
           <View style={styles.rowContainer}>
             <Text style={styles.textLabel}>
-              {strings.availability}
+              {strings.category}
             </Text>
             <Text style={styles.text}>
-              {service.availability}
+              {activity.category}
+            </Text>
+          </View>
+          <View style={styles.columnContainer}>
+            <Text style={styles.textLabel}>
+              {strings.address}
+            </Text>
+            <Text style={styles.text}>
+              {activity.address}
             </Text>
           </View>
           <View style={styles.columnContainer}>
@@ -59,7 +65,7 @@ export default class DetailServiceScreen extends React.Component {
               {strings.description}
             </Text>
             <Text style={styles.text}>
-              {service.description}
+              {activity.description}
             </Text>
           </View>
         </View>

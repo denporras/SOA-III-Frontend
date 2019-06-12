@@ -58,7 +58,7 @@ export default class RoomScreen extends React.Component {
       >
         <View>
           <View style={styles.rowContainer}>
-            <Image style={styles.thumbnail} source={{ uri: `http://192.168.1.122:1337${item.photo.url}` }} />
+            <Image style={styles.thumbnail} source={{ uri: `http://${global.ipAddress}:1337${item.photo.url}` }} />
             <View style={{ flex: 1 }}>
               <Text style={styles.text}>{item.name}</Text>
             </View>
@@ -69,7 +69,7 @@ export default class RoomScreen extends React.Component {
     )
   }
   componentDidMount() {
-    return fetch(`http://192.168.1.122:1337/${global.languageSelected}rooms`)
+    return fetch(`http://${global.ipAddress}:1337/${global.languageSelected}rooms`)
       .then((response) => response.json())
       .then((responseJson) => {
         this.setState({
@@ -79,9 +79,6 @@ export default class RoomScreen extends React.Component {
       })
   }
   render() {
-    // const response = fetch(`http://192.168.1.122:1337/englishrooms`)
-    // const json = [{name: 'pre'}, {name: 'sui'}, {name: 'de'}]
-    //alert(global.json)
     if (this.state.isLoading) {
       return (
         <View style={{ flex: 1, paddingTop: 20 }}>

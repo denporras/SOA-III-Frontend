@@ -37,7 +37,7 @@ export default class DetailRoomScreen extends React.Component {
           <View style={styles.columnContainer}>
             <Text style={styles.text}>{room.name}</Text>
           </View>
-          <Image source={{ uri: `http://192.168.1.122:1337${room.photo.url}` }} style={styles.image} />
+          <Image source={{ uri: `http://${global.ipAddress}:1337${room.photo.url}` }} style={styles.image} />
           <View style={styles.rowContainer}>
             <Text style={styles.textLabel}>
               {strings.beds}

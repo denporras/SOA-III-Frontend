@@ -22,7 +22,11 @@ const strings = new LocalizedStrings({
     description: 'Description: ',
     services: 'Services',
     type: 'Type: ',
-    availability: 'Availability: '
+    availability: 'Availability: ',
+    activities: 'Activities',
+    vendor: 'Vendor: ',
+    category: 'Category: ',
+    address: 'Address: '
   },
   es: {
     username: 'Usuario',
@@ -45,7 +49,11 @@ const strings = new LocalizedStrings({
     description: 'Descripción: ',
     services: 'Servicios',
     type: 'Tipo: ',
-    availability: 'Disponibilidad: '
+    availability: 'Disponibilidad: ',
+    activities: 'Actividades',
+    vendor: 'Proveedor: ',
+    category: 'Categoría: ',
+    address: 'Dirección: '
   }
 });
 export default strings;

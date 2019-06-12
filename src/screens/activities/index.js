@@ -12,20 +12,20 @@ import {
 import { dimensionsDevice, colors } from '../../styles'
 import strings from '../../components/language'
 
-import IconService from '../../../assets/service.png'
+import IconActivity from '../../../assets/activity.png'
 
 
 
-export default class ServiceScreen extends React.Component {
+export default class ActivityScreen extends React.Component {
   static navigationOptions = {
     drawerLabel: () => (
       <Text style={styles.text}>
-        {strings.services}
+        {strings.activities}
       </Text>
     ),
     drawerIcon: () => (
       <Image
-        source={IconService}
+        source={IconActivity}
         style={[styles.icon, { tintColor: colors.black }]}
       />
     )
@@ -41,7 +41,7 @@ export default class ServiceScreen extends React.Component {
 
   _onPressRoom = (item) => {
     try {
-      this.props.navigation.navigate('ServiceDetail', { service: item })
+      this.props.navigation.navigate('ActivityDetail', { activity: item })
     } catch {
       alert("Error")
     }
@@ -69,7 +69,7 @@ export default class ServiceScreen extends React.Component {
     )
   }
   componentDidMount() {
-    return fetch(`http://${global.ipAddress}:1337/${global.languageSelected}services`)
+    return fetch(`http://${global.ipAddress}:1337/${global.languageSelected}activities`)
       .then((response) => response.json())
       .then((responseJson) => {
         this.setState({
@@ -79,7 +79,6 @@ export default class ServiceScreen extends React.Component {
       })
   }
   render() {
-
     if (this.state.isLoading) {
       return (
         <View style={{ flex: 1, paddingTop: 20 }}>
