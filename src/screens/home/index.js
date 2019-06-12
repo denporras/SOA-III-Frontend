@@ -4,15 +4,21 @@ import {
   StyleSheet,
   Image,
   View,
-  Text
+  Text,
+  Linking
 } from 'react-native'
 
+import { SocialIcon } from 'react-native-elements'
+
 import { dimensionsDevice, colors } from '../../styles'
+
+import strings from '../../components/language'
 
 import Front1 from '../../../assets/front.jpg'
 import Front2 from '../../../assets/front-2.jpg'
 import Front3 from '../../../assets/front-3.jpg'
 import Front4 from '../../../assets/front-4.jpg'
+import Monos from '../../../assets/monos.jpg'
 import IconHome from '../../../assets/home.png'
 
 
@@ -21,7 +27,7 @@ export default class HomeScreen extends React.Component {
   static navigationOptions = {
     drawerLabel: () => (
       <Text style={styles.text}>
-        Home
+        {strings.home}
       </Text>
     ),
     drawerIcon: () => (
@@ -32,13 +38,10 @@ export default class HomeScreen extends React.Component {
     )
   };
 
-  // constructor() {
-  //   super()
-  //   this.state = {
-  //     username: '',
-  //     password: ''
-  //   }
-  // }
+  constructor() {
+    super()
+    global.languageSelected = strings.getLanguage()
+  }
 
   render() {
     return (
@@ -47,26 +50,53 @@ export default class HomeScreen extends React.Component {
         <View style={styles.content}>
           <Image source={Front1} style={styles.image} />
           <Text style={styles.text}>
-            'El Hotel' de Manuel Antonio es un hotel ubicado a 50 metros de la playa más hermosa de Costa Rica.
+            {strings.paragraph1}
           </Text>
         </View>
         <View style={styles.content}>
           <Image source={Front2} style={styles.image} />
           <Text style={styles.text}>
-            'El Hotel' de Manuel Antonio es un hotel ubicado a 50 metros de la playa más hermosa de Costa Rica.
-          </Text>
-        </View>
-        <View style={styles.content}>
-          <Image source={Front3} style={styles.image} />
-          <Text style={styles.text}>
-            'El Hotel' de Manuel Antonio es un hotel ubicado a 50 metros de la playa más hermosa de Costa Rica.
+            {strings.paragraph2}
           </Text>
         </View>
         <View style={styles.content}>
           <Image source={Front4} style={styles.image} />
           <Text style={styles.text}>
-            'El Hotel' de Manuel Antonio es un hotel ubicado a 50 metros de la playa más hermosa de Costa Rica.
+            {strings.paragraph3}
           </Text>
+        </View>
+        <View style={styles.content}>
+          <Image source={Front3} style={styles.image} />
+          <Text style={styles.text}>
+            {strings.paragraph4}
+          </Text>
+        </View>
+        <View style={styles.separator} />
+        <View style={styles.content}>
+          <Image source={Monos} style={styles.image} />
+          <Text style={styles.text}>
+            {strings.followUs}
+          </Text>
+        </View>
+        <View style={styles.flowRight}>
+          <SocialIcon
+            type="facebook"
+            onPress={() => {
+              Linking.openURL('https://www.facebook.com/dennis.porrasbarrantes');
+            }}
+          />
+          <SocialIcon
+            type="instagram"
+            onPress={() => {
+              Linking.openURL('https://www.instagram.com/denitos_xd');
+            }}
+          />
+          <SocialIcon
+            type="twitter"
+            onPress={() => {
+              Linking.openURL('https://twitter.com/denporras');
+            }}
+          />
         </View>
       </ScrollView>
     )
@@ -103,5 +133,13 @@ const styles = StyleSheet.create({
     color: colors.secondary1,
     fontSize: 18,
     marginTop: 0
+  },
+  flowRight: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
+  separator: {
+    height: 120
   }
 })

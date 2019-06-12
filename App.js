@@ -1,51 +1,23 @@
 import { createStackNavigator, createDrawerNavigator } from 'react-navigation'
-import React from 'react'
-
-import {
-  Image,
-  Button,
-  StyleSheet
-} from 'react-native'
 
 import LoginScreen from './src/screens/login'
 import RegisterScreen from './src/screens/register'
 import HomeScreen from './src/screens/home'
+import SettingsScreen from './src/screens/settings'
+import RoomScreen from './src/screens/room'
+import DetailRoomScreen from './src/screens/detail-room'
 
 import { colors } from './src/styles'
 
+import strings from './src/components/language'
+strings.setLanguage('es')
 
-class MyNotificationsScreen extends React.Component {
-  static navigationOptions = {
-    title: 'Notificationes',
-    drawerLabel: 'Notifications',
-    drawerIcon: ({ tintColor }) => (
-      <Image
-        source={require('./assets/email.png')}
-        style={[styles.icon, { tintColor: tintColor }]}
-      />
-    ),
-  };
 
-  render() {
-    return (
-      <Button
-        onPress={() => this.props.navigation.navigate('Login')}
-        title="Go back home"
-      />
-    );
-  }
-}
-
-const styles = StyleSheet.create({
-  icon: {
-    width: 24,
-    height: 24,
-  },
-});
 
 const menu = createDrawerNavigator({
   Home: { screen: HomeScreen },
-  Notifications: { screen: MyNotificationsScreen, },
+  Settings: { screen: SettingsScreen },
+  Rooms: { screen: RoomScreen }
 }, {
     drawerBackgroundColor: colors.primary2
   }
@@ -54,6 +26,7 @@ const menu = createDrawerNavigator({
 const App = createStackNavigator({
   Login: { screen: LoginScreen },
   Register: { screen: RegisterScreen },
+  RoomDetail: {screen: DetailRoomScreen },
   Main: {
     screen: menu,
     navigationOptions: {
