@@ -34,7 +34,6 @@ export default class RegisterScreen extends React.Component {
     super()
     this.state = {
       name: '',
-      lastName: '',
       email: '',
       username: '',
       password: '',
@@ -44,12 +43,6 @@ export default class RegisterScreen extends React.Component {
   _onNameTextChanged = event => {
     this.setState({
       name: event.nativeEvent.text,
-    })
-  }
-
-  _onLastNameTextChanged = event => {
-    this.setState({
-      lastName: event.nativeEvent.text,
     })
   }
 
@@ -107,7 +100,7 @@ export default class RegisterScreen extends React.Component {
             returnKeyType={'done'}
             autoCorrect={false}
             value={this.state.lastName}
-            onChange={this._onLastNameTextChanged}
+            onChange={this._onNameTextChanged}
           />
           <Input
             source={IconEmail}

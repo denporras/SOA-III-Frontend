@@ -26,7 +26,9 @@ const strings = new LocalizedStrings({
     activities: 'Activities',
     vendor: 'Vendor: ',
     category: 'Category: ',
-    address: 'Address: '
+    address: 'Address: ',
+    calendar: 'Calendar',
+    start: 'Start: '
   },
   es: {
     username: 'Usuario',
@@ -53,7 +55,9 @@ const strings = new LocalizedStrings({
     activities: 'Actividades',
     vendor: 'Proveedor: ',
     category: 'Categoría: ',
-    address: 'Dirección: '
+    address: 'Dirección: ',
+    calendar: 'Calendario',
+    start: 'Comienza: '
   }
 });
 export default strings;
