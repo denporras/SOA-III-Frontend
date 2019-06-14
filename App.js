@@ -17,6 +17,12 @@ import { colors } from './src/styles'
 
 import strings from './src/components/language'
 strings.setLanguage('es')
+global.languageSelected = strings.getLanguage()
+global.ipAddress = '192.168.1.122'
+
+global.isLogged = false
+global.username = ''
+global.token = ''
 
 const menu = createDrawerNavigator({
   Home: { screen: HomeScreen },
@@ -33,7 +39,7 @@ const menu = createDrawerNavigator({
 const App = createStackNavigator({
   Login: { screen: LoginScreen },
   Register: { screen: RegisterScreen },
-  RoomDetail: {screen: DetailRoomScreen },
+  RoomDetail: { screen: DetailRoomScreen },
   ServiceDetail: { screen: DetailServiceScreen },
   ActivityDetail: { screen: DetailActivityScreen },
   CalendarDetail: { screen: DetailCalendarScreen },

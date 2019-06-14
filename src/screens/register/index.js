@@ -11,6 +11,8 @@ import {
   colors,
   dimensionsDevice
 } from '../../styles'
+import strings from '../../components/language'
+
 
 import IconName from '../../../assets/name.png'
 import IconEmail from '../../../assets/email.png'
@@ -19,11 +21,10 @@ import IconLocked from '../../../assets/locked.png'
 
 import Input from '../../components/login-components/logininput.js'
 import LoginButton from '../../components/login-components/loginbutton'
-import console from 'console'
 
 export default class RegisterScreen extends React.Component {
   static navigationOptions = {
-    title: 'Register',
+    title: strings.register,
     headerStyle: {
       backgroundColor: colors.primary
     },
@@ -66,36 +67,42 @@ export default class RegisterScreen extends React.Component {
 
   _onRegister = async () => {
     try {
-      // const URL = `http://${global.IpAddress}:8080/api/v1/users`
-      // console.log(URL)
-      // const response = await fetch(URL, {
-      //   method: 'POST',
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      //   },
-      //   body: JSON.stringify({
-      //     name: this.state.name,
-      //     username: this.state.username,
-      //     password: this.state.password
-      //   }),
-      // })
-      // const json = await response.json()
-      // console.log(json)
-      return true
+      const usersEndpoint = `http://${global.ipAddress}:5000/users`
+      console.log(usersEndpoint)
+      const response = await fetch(usersEndpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: this.state.name,
+          email: this.state.email,
+          username: this.state.username,
+          password: this.state.password
+        }),
+      })
+      const json = await response.json()
+      if (json) {
+        return true
+      } else {
+        return false
+      }
     } catch (error) {
-      //alert(error)
+      console.log(error)
       return false
     }
   }
 
   render() {
+    const { params } = this.props.navigation.state
+    const { screenBack } = params
     return (
       <View style={styles.picture}>
         <View style={styles.image}></View>
         <KeyboardAvoidingView behavior="padding" style={styles.container}>
           <Input
             source={IconName}
-            placeholder="Full name"
+            placeholder={strings.name}
             autoCapitalize={'none'}
             returnKeyType={'done'}
             autoCorrect={false}
@@ -104,7 +111,7 @@ export default class RegisterScreen extends React.Component {
           />
           <Input
             source={IconEmail}
-            placeholder="Email"
+            placeholder={strings.email}
             autoCapitalize={'none'}
             returnKeyType={'done'}
             autoCorrect={false}
@@ -113,7 +120,7 @@ export default class RegisterScreen extends React.Component {
           />
           <Input
             source={IconUser}
-            placeholder="Username"
+            placeholder={strings.username}
             autoCapitalize={'none'}
             returnKeyType={'done'}
             autoCorrect={false}
@@ -123,7 +130,7 @@ export default class RegisterScreen extends React.Component {
           <Input
             source={IconLocked}
             secureTextEntry={true}
-            placeholder="Password"
+            placeholder={strings.password}
             returnKeyType={'done'}
             autoCapitalize={'none'}
             autoCorrect={false}
@@ -134,15 +141,16 @@ export default class RegisterScreen extends React.Component {
         <LoginButton
           onPressButton={this._onRegister}
           navigation={this.props.navigation}
-          message='Register'
-          errorTitle='Failed to register'
-          errorMessage='Register error'
+          message={strings.register}
+          errorTitle={strings.failRegister}
+          errorMessage={strings.regError}
           screen='Login'
+          screenBack={screenBack}
         />
         <View style={styles.cancel}>
           <Text
             style={styles.text}
-            onPress={() => this.props.navigation.navigate('Login')}
+            onPress={() => this.props.navigation.navigate('Login', { screenBack })}
           >Cancel</Text>
         </View>
 

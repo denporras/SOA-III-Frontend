@@ -39,6 +39,31 @@ export default class SettingsScreen extends React.Component {
     global.lang = lang
   }
 
+  _onPressLogout = async () => {
+    try {
+      const usersEndpoint = `http://${global.ipAddress}:5000/users/logout`
+      const response = await fetch(usersEndpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'User': global.username,
+          'Token': global.token
+        },
+        body: JSON.stringify({
+          username: global.username
+        }),
+      })
+      const { success } = await response.json()
+      if (success) {
+        global.token = ''
+        isLogged = false
+        this.props.navigation.navigate('Login', { screenBack: 'Settings' })
+      }
+    } catch (error) {
+      console.log()
+    }
+  }
+
   _setLanguage(language) {
     strings.setLanguage(global.lang[language].shortform)
     global.languageSelected = global.lang[language].shortform
@@ -66,11 +91,19 @@ export default class SettingsScreen extends React.Component {
           </Text>
           <View style={styles.separator} />
         </View>
-        <Button
-          title={strings.logout}
-          onPress={() => this.props.navigation.navigate('Login')}
-          color={colors.secondary}
-        />
+        {global.isLogged ? (
+          <Button
+            title={strings.logout}
+            onPress={this._onPressLogout}
+            color={colors.secondary}
+          />
+        ) : (
+            <Button
+              title={strings.login}
+              onPress={() => this.props.navigation.navigate('Login', { screenBack: 'Settings' })}
+              color={colors.secondary}
+            />
+          )}
       </View>
     )
   }

@@ -70,7 +70,7 @@ export default class CalendarScreen extends React.Component {
     )
   }
   componentDidMount() {
-    return fetch(`http://${global.ipAddress}:1337/${global.languageSelected}calendars`)
+    return fetch(`http://${global.ipAddress}:5000/${global.languageSelected}calendars`)
       .then((response) => response.json())
       .then((responseJson) => {
         this.setState({

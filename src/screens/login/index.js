@@ -7,8 +7,9 @@ import {
   Text,
   View,
 } from 'react-native'
-import DialogInput from 'react-native-dialog-input';
+
 import { dimensionsDevice } from '../../styles'
+import strings from '../../components/language'
 
 import ImgBackground from '../../../assets/wallpaper.jpg'
 import IconUser from '../../../assets/user.png'
@@ -27,26 +28,9 @@ export default class LoginScreen extends React.Component {
     super()
     this.state = {
       username: '',
-      password: '',
-      isDialogVisible: false,
+      password: ''
     }
-
-    global.IpAddress = '192.168.0.2'
   }
-
-  // _onDialogClose = () => {
-  //   this.setState({
-  //     isDialogVisible: !this.state.isDialogVisible
-  //   })
-  // }
-
-  // _onDialogSubmit = inputText => {
-  //   global.IpAddress = inputText
-  //   this.setState({
-  //     isDialogVisible: !this.state.isDialogVisible
-  //   })
-  //   console.log(global.IpAddress)
-  // }
 
   _onPasswordTextChanged = event => {
     this.setState({
@@ -62,22 +46,31 @@ export default class LoginScreen extends React.Component {
 
   _isValidUser = async () => {
     global.username = this.state.username
-    global.password = this.state.password
-    // const URL = `http://${global.IpAddress}:8080/api/v1/users/login?username=${this.state.username}&password=${this.state.password}`
+    const usersEndpoint = `http://${global.ipAddress}:5000/users/login`
     try {
-      // console.log(URL)
-      // const response = await fetch(URL, {
-      //   method: 'GET',
-      //   mode: 'cors',
-      // })
-      // const json = await response.json()
-      return true
-    } catch (error) {
-      alert("Error connecting to server!")
+      const response = await fetch(usersEndpoint, {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username: this.state.username,
+          password: this.state.password
+        }),
+      })
+      const { success, token } = await response.json()
+      global.token = token
+      global.isLogged = success
+      return success
+    } catch {
+      return false
     }
   }
 
   render() {
+    const { params } = this.props.navigation.state
+    const { screenBack } = params
     return (
       <ImageBackground style={styles.picture} source={ImgBackground}>
         <View style={styles.containerImage}>
@@ -87,7 +80,7 @@ export default class LoginScreen extends React.Component {
         <KeyboardAvoidingView behavior="padding" style={styles.container}>
           <Input
             source={IconUser}
-            placeholder="Username"
+            placeholder={strings.username}
             autoCapitalize={'none'}
             returnKeyType={'done'}
             autoCorrect={false}
@@ -97,7 +90,7 @@ export default class LoginScreen extends React.Component {
           <Input
             source={IconLocked}
             secureTextEntry={true}
-            placeholder="Password"
+            placeholder={strings.password}
             returnKeyType={'done'}
             autoCapitalize={'none'}
             autoCorrect={false}
@@ -108,24 +101,19 @@ export default class LoginScreen extends React.Component {
         <LoginButton
           onPressButton={this._isValidUser}
           navigation={this.props.navigation}
-          message='Login'
-          errorTitle='Failed Login'
-          errorMessage='Wrong username or password'
-          screen='Home'
+          message={strings.login}
+          errorTitle={strings.failedLogin}
+          errorMessage={strings.errorMessage}
+          screen={screenBack}
         />
         <View style={styles.containerSignUp}>
           <Text
             style={styles.text}
-            onPress={() => this.props.navigation.navigate('Register')}
-          >Create Account</Text>
+            onPress={() => this.props.navigation.navigate('Register', { screenBack })}
+          >
+          {strings.createAccount}
+          </Text>
         </View>
-        {/* <DialogInput isDialogVisible={this.state.isDialogVisible}
-          title={"Server IP Address"}
-          message={"Insert server IP Address"}
-          hintInput={"192.168.0.1"}
-          submitInput={(inputText) => { this._onDialogSubmit(inputText) }}
-          closeDialog={this._onDialogClose}>
-        </DialogInput> */}
       </ImageBackground>
     )
   }

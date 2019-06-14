@@ -38,7 +38,8 @@ export default class LoginButton extends React.Component {
       if (result) {
         this.buttonAnimated.setValue(0)
         this.growAnimated.setValue(0)
-        this.props.navigation.navigate(this.props.screen)
+        const loginScreenBack = this.props.screenBack
+        this.props.navigation.navigate(this.props.screen, { loginScreenBack })
       } else {
         Alert.alert(this.props.errorTitle, this.props.errorMessage)
         this.buttonAnimated.setValue(0)

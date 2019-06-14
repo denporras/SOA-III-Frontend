@@ -69,7 +69,7 @@ export default class ServiceScreen extends React.Component {
     )
   }
   componentDidMount() {
-    return fetch(`http://${global.ipAddress}:1337/${global.languageSelected}services`)
+    return fetch(`http://${global.ipAddress}:5000/${global.languageSelected}services`)
       .then((response) => response.json())
       .then((responseJson) => {
         this.setState({
