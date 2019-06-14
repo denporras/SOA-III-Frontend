@@ -12,6 +12,7 @@ import ActivityScreen from './src/screens/activities'
 import DetailActivityScreen from './src/screens/detail-activity'
 import CalendarScreen from './src/screens/calendar'
 import DetailCalendarScreen from './src/screens/detail-calendar'
+import ContactScreen from './src/screens/contact'
 
 import { colors } from './src/styles'
 
@@ -26,11 +27,12 @@ global.token = ''
 
 const menu = createDrawerNavigator({
   Home: { screen: HomeScreen },
-  Settings: { screen: SettingsScreen },
   Rooms: { screen: RoomScreen },
   Services: { screen: ServiceScreen },
   Activities: { screen: ActivityScreen },
-  Calendar: { screen: CalendarScreen }
+  Calendar: { screen: CalendarScreen },
+  Contact: { screen: ContactScreen },
+  Settings: { screen: SettingsScreen },
 }, {
     drawerBackgroundColor: colors.primary2
   }
