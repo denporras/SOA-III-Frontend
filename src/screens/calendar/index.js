@@ -1,3 +1,4 @@
+//Exports for screen
 import React from 'react'
 import {
   ActivityIndicator,
@@ -15,8 +16,9 @@ import strings from '../../components/language'
 import IconCalendar from '../../../assets/calendar.png'
 
 
-
+//React component for calendar screen
 export default class CalendarScreen extends React.Component {
+  //drawer tag
   static navigationOptions = {
     drawerLabel: () => (
       <Text style={styles.text}>
@@ -39,6 +41,7 @@ export default class CalendarScreen extends React.Component {
     }
   }
 
+  //call detailed view
   _onPressRoom = (item) => {
     try {
       this.props.navigation.navigate('CalendarDetail', { calendar: item })
@@ -49,6 +52,7 @@ export default class CalendarScreen extends React.Component {
 
   _keyExtractor = (item, index) => index.toString()
 
+  //render list element
   _renderItem = ({ item }) => {
 
     return (

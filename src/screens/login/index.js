@@ -11,11 +11,13 @@ import {
 import { dimensionsDevice } from '../../styles'
 import strings from '../../components/language'
 
+//Background and icons
 import ImgBackground from '../../../assets/wallpaper.jpg'
 import IconUser from '../../../assets/user.png'
 import IconLocked from '../../../assets/locked.png'
 import LogoReact from '../../../assets/logo.png'
 
+//components for login
 import Input from '../../components/login-components/logininput.js'
 import LoginButton from '../../components/login-components/loginbutton'
 
@@ -26,7 +28,7 @@ export default class LoginScreen extends React.Component {
 
   constructor() {
     super()
-    this.state = {
+    this.state = { //user states
       username: '',
       password: ''
     }
@@ -44,6 +46,7 @@ export default class LoginScreen extends React.Component {
     })
   }
 
+  //Function to login
   _isValidUser = async () => {
     global.username = this.state.username
     const usersEndpoint = `http://${global.ipAddress}:5000/users/login`

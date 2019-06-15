@@ -1,5 +1,6 @@
 import React from 'react';
 import LocalizedStrings from 'localized-strings';
+//Define strings in english and spanish
 const strings = new LocalizedStrings({
   en: {
     username: 'Username',

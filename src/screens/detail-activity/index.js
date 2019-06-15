@@ -13,8 +13,9 @@ import { dimensionsDevice, colors } from '../../styles'
 import strings from '../../components/language'
 
 
-
+//react component for detail view in activity
 export default class DetailActivityScreen extends React.Component {
+  //define a header in screen
   static navigationOptions = {
     title: strings.activities,
     headerStyle: {
@@ -27,6 +28,7 @@ export default class DetailActivityScreen extends React.Component {
     super()
   }
   render() {
+    //Get parameters from given activity
     const { params } = this.props.navigation.state
     const { activity } = params
     return (
@@ -75,6 +77,7 @@ export default class DetailActivityScreen extends React.Component {
   }
 }
 
+//styles needed
 const styles = StyleSheet.create({
 
   contentContainer: {

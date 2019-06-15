@@ -14,6 +14,7 @@ import { dimensionsDevice, colors } from '../../styles'
 
 import strings from '../../components/language'
 
+//Images showing in home
 import Front1 from '../../../assets/front.jpg'
 import Front2 from '../../../assets/front-2.jpg'
 import Front3 from '../../../assets/front-3.jpg'
@@ -22,8 +23,9 @@ import Monos from '../../../assets/monos.jpg'
 import IconHome from '../../../assets/home.png'
 
 
-
+//React compnent for Home screen
 export default class HomeScreen extends React.Component {
+  //drawer tag
   static navigationOptions = {
     drawerLabel: () => (
       <Text style={styles.text}>
@@ -42,6 +44,7 @@ export default class HomeScreen extends React.Component {
     super()
   }
 
+  //Scroll view to show information and links to social networks
   render() {
     return (
       <ScrollView contentContainerStyle={styles.contentContainer}>
@@ -102,6 +105,7 @@ export default class HomeScreen extends React.Component {
   }
 }
 
+//Styles needed
 const styles = StyleSheet.create({
 
   contentContainer: {

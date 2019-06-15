@@ -11,10 +11,12 @@ import {
   colors
 } from '../../styles'
 
+//string for translation
 import strings from '../../components/language'
 
 import IconSettings from '../../../assets/settings.png'
 
+//react component for settings screen
 export default class SettingsScreen extends React.Component {
   static navigationOptions = {
     drawerLabel: () => (
@@ -32,6 +34,7 @@ export default class SettingsScreen extends React.Component {
 
   constructor(props) {
     super(props)
+    //define languages available
     const lang = [
       { shortform: 'en', longform: 'english' },
       { shortform: 'es', longform: 'spanish' }
@@ -39,6 +42,7 @@ export default class SettingsScreen extends React.Component {
     global.lang = lang
   }
 
+  //log out function to call api and remove token
   _onPressLogout = async () => {
     try {
       const usersEndpoint = `http://${global.ipAddress}:5000/users/logout`
@@ -65,6 +69,7 @@ export default class SettingsScreen extends React.Component {
     }
   }
 
+  //function that sets a language in app
   _setLanguage(language) {
     strings.setLanguage(global.lang[language].shortform)
     global.languageSelected = global.lang[language].shortform

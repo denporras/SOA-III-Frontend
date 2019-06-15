@@ -1,5 +1,7 @@
+//import staack and drawer navigator
 import { createStackNavigator, createDrawerNavigator } from 'react-navigation'
 
+//import all the screens
 import LoginScreen from './src/screens/login'
 import RegisterScreen from './src/screens/register'
 import HomeScreen from './src/screens/home'
@@ -16,17 +18,21 @@ import ContactScreen from './src/screens/contact'
 import PostScreen from './src/screens/posts'
 import CameraScreen from './src/screens/camera'
 
+//Get defined colors
 import { colors } from './src/styles'
 
+//Get string for translation
 import strings from './src/components/language'
 strings.setLanguage('es')
-global.languageSelected = strings.getLanguage()
-global.ipAddress = '192.168.1.122'
 
+//Global variables to use the app
+global.languageSelected = strings.getLanguage()
+global.ipAddress = '192.168.43.47'
 global.isLogged = false
 global.username = ''
 global.token = ''
 
+//Drawer navigator
 const menu = createDrawerNavigator({
   Home: { screen: HomeScreen },
   Rooms: { screen: RoomScreen },
@@ -41,6 +47,7 @@ const menu = createDrawerNavigator({
   }
 )
 
+//Stack navigator
 const App = createStackNavigator({
   Login: { screen: LoginScreen },
   Register: { screen: RegisterScreen },

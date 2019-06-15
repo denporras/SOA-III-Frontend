@@ -1,6 +1,6 @@
 import Dimensions from 'Dimensions'
 
-
+//defined colors
 export const colors = {
   black: '#000',
   error: '#FF0700',
@@ -16,15 +16,8 @@ export const colors = {
   secondary1: '#FFFBE6'
 }
 
+// define device dimensions
 export const dimensionsDevice = {
   height: Dimensions.get('window').height,
   width: Dimensions.get('window').width,
-}
-
-export const roundButton = {
-  alignItems: 'center',
-  borderRadius: 20,
-  alignSelf: 'center',
-  justifyContent: 'center',
-  zIndex: 100,
 }

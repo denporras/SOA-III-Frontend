@@ -1,3 +1,4 @@
+//Exports for screen
 import React from 'react'
 import {
   ActivityIndicator,
@@ -15,8 +16,9 @@ import strings from '../../components/language'
 import IconActivity from '../../../assets/activity.png'
 
 
-
+//React component for activity screen
 export default class ActivityScreen extends React.Component {
+  //Define drawer tag
   static navigationOptions = {
     drawerLabel: () => (
       <Text style={styles.text}>
@@ -33,12 +35,14 @@ export default class ActivityScreen extends React.Component {
 
   constructor() {
     super()
+    //define state
     this.state = {
       isLoading: true,
       data: []
     }
   }
 
+  //call detail view for each activity
   _onPressRoom = (item) => {
     try {
       this.props.navigation.navigate('ActivityDetail', { activity: item })
@@ -49,6 +53,7 @@ export default class ActivityScreen extends React.Component {
 
   _keyExtractor = (item, index) => index.toString()
 
+  //Render elemnt list
   _renderItem = ({ item }) => {
 
     return (
@@ -68,6 +73,7 @@ export default class ActivityScreen extends React.Component {
       </TouchableHighlight>
     )
   }
+  //Retrieve data from api to show
   componentDidMount() {
     return fetch(`http://${global.ipAddress}:5000/${global.languageSelected}activities`)
       .then((response) => response.json())
@@ -79,6 +85,7 @@ export default class ActivityScreen extends React.Component {
       })
   }
   render() {
+    //If not ready show activity indicator
     if (this.state.isLoading) {
       return (
         <View style={{ flex: 1, paddingTop: 20 }}>
@@ -97,6 +104,7 @@ export default class ActivityScreen extends React.Component {
   }
 }
 
+//Styles needed
 const styles = StyleSheet.create({
 
   contentContainer: {

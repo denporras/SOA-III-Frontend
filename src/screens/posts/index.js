@@ -18,7 +18,7 @@ import strings from '../../components/language'
 import IconPost from '../../../assets/post.png'
 
 
-
+//React component to posts
 export default class PostScreen extends React.Component {
   static navigationOptions = {
     drawerLabel: () => (
@@ -58,6 +58,7 @@ export default class PostScreen extends React.Component {
 
   _keyExtractor = (item, index) => index.toString()
 
+  //render an item in lost
   _renderItem = ({ item }) => {
 
     return (
@@ -83,6 +84,7 @@ export default class PostScreen extends React.Component {
       </TouchableHighlight>
     )
   }
+  //retreive data from api
   componentDidMount() {
     return fetch(`http://${global.ipAddress}:5000/posts`)
       .then((response) => response.json())
@@ -93,6 +95,8 @@ export default class PostScreen extends React.Component {
         })
       })
   }
+
+  //render componet
   render() {
 
     if (this.state.isLoading) {
@@ -102,6 +106,7 @@ export default class PostScreen extends React.Component {
         </View>
       );
     }
+    //verify if user is logged to show login button or rating options
     return (
       <View style={styles.contentContainer}>
         {global.isLogged ? (

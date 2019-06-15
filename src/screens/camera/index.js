@@ -9,7 +9,7 @@ import {
   Alert,
   ActivityIndicator
 } from 'react-native';
-
+//camera and permissions
 import { Camera, Permissions } from 'expo';
 
 import {
@@ -19,25 +19,29 @@ import {
 
 import strings from '../../components/language'
 import IconFlip from '../../../assets/flip.png'
+import IconSend from '../../../assets/send.png'
 
-
+//react component to take picture and send post
 export default class CameraScreen extends React.Component {
 
   constructor() {
     super()
-    this.camera = null
-    this.state = {
+    this.camera = null//Camera reference
+    this.state = { //Permissions and type of camera
       hasCameraPermission: null,
       type: Camera.Constants.Type.front,
       taking: false
     }
   }
 
+  //Function that takes a picture and the uploads in strapi server to send to post api
   _takepicture = async () => {
+    //To disable take picture button
     this.setState({
       taking: true
     })
     try {
+      //Upload picture in strapi file server
       const photo = await this.camera.takePictureAsync()
       let formdata = new FormData()
       formdata.append('files', {
@@ -56,7 +60,7 @@ export default class CameraScreen extends React.Component {
       const resp = await response
       const { url } = JSON.parse(resp._bodyInit)[0]
 
-
+      //Post in post api with url given by strapi
       const { params } = this.props.navigation.state
       const { rate, comment } = params.post
       const postEndpoint = `http://${global.ipAddress}:5000/posts`
@@ -77,12 +81,13 @@ export default class CameraScreen extends React.Component {
       this.setState({
         taking: false
       })
+      //Verify if it was successful
       if (json) {
         this.props.navigation.navigate('Home')
       } else {
         Alert.alert(strings.err, strings.cantPublish)
       }
-    } catch {
+    } catch { //in case of failure to take picture again
       this.setState({
         taking: false
       })
@@ -90,6 +95,7 @@ export default class CameraScreen extends React.Component {
     }
   };
 
+  //Ask for permissions
   async componentDidMount() {
     const { status } = await Permissions.askAsync(Permissions.CAMERA)
     this.setState({ hasCameraPermission: status === 'granted' })
@@ -97,7 +103,7 @@ export default class CameraScreen extends React.Component {
 
   render() {
     const { hasCameraPermission } = this.state;
-
+    //Show nothing when asking permissions
     if (hasCameraPermission === null) {
 
       return <View />;
@@ -153,7 +159,7 @@ export default class CameraScreen extends React.Component {
                     }}
                     onPress={this._takepicture}>
                     <Image
-                      source={IconFlip}
+                      source={IconSend}
                       style={styles.icon}
                     />
                   </TouchableOpacity>
@@ -165,7 +171,7 @@ export default class CameraScreen extends React.Component {
     }
   }
 }
-
+//Styles needed
 const styles = StyleSheet.create({
 
   contentContainer: {

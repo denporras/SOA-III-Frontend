@@ -13,7 +13,7 @@ import { dimensionsDevice, colors } from '../../styles'
 import strings from '../../components/language'
 
 
-
+//react component for detail screen in room
 export default class DetailRoomScreen extends React.Component {
   static navigationOptions = {
     title: strings.rooms,
@@ -27,8 +27,6 @@ export default class DetailRoomScreen extends React.Component {
     super()
   }
   render() {
-    // const { room } = this.props.navigation.state
-    // console.log(room)
     const { params } = this.props.navigation.state
     const { room } = params
     return (

@@ -65,6 +65,7 @@ export default class RegisterScreen extends React.Component {
     })
   }
 
+  //Register function to call api
   _onRegister = async () => {
     try {
       const usersEndpoint = `http://${global.ipAddress}:5000/users`

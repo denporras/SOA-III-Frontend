@@ -16,7 +16,9 @@ import strings from '../../components/language'
 import IconContact from '../../../assets/contact.png'
 import LogoReact from '../../../assets/logo.png'
 
+//React component for contact screen
 export default class ContactScreen extends React.Component {
+  //Tag in drawer
   static navigationOptions = {
     drawerLabel: () => (
       <Text style={styles.text}>
@@ -31,6 +33,7 @@ export default class ContactScreen extends React.Component {
     )
   };
 
+  //Contructor with all states
   constructor() {
     super()
     this.state = {
@@ -39,6 +42,7 @@ export default class ContactScreen extends React.Component {
     }
   }
 
+  //Retreive data from api
   componentDidMount() {
     return fetch(`http://${global.ipAddress}:5000/${global.languageSelected}contacts`)
       .then((response) => response.json())

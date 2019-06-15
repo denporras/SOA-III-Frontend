@@ -13,7 +13,7 @@ import { dimensionsDevice, colors } from '../../styles'
 import strings from '../../components/language'
 
 
-
+//react component for detail screen in calendar
 export default class DetailCalendarScreen extends React.Component {
   static navigationOptions = {
     title: strings.calendar,

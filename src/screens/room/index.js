@@ -15,7 +15,7 @@ import strings from '../../components/language'
 import IconRoom from '../../../assets/room.png'
 
 
-
+//react component for room screen
 export default class RoomScreen extends React.Component {
   static navigationOptions = {
     drawerLabel: () => (

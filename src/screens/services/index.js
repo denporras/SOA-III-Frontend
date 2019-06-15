@@ -15,7 +15,7 @@ import strings from '../../components/language'
 import IconService from '../../../assets/service.png'
 
 
-
+//react component for service screen
 export default class ServiceScreen extends React.Component {
   static navigationOptions = {
     drawerLabel: () => (
