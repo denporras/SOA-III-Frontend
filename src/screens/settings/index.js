@@ -55,9 +55,10 @@ export default class SettingsScreen extends React.Component {
       })
       const { success } = await response.json()
       if (success) {
+        global.username = ''
         global.token = ''
         isLogged = false
-        this.props.navigation.navigate('Login', { screenBack: 'Settings' })
+        this.props.navigation.navigate('Home')
       }
     } catch (error) {
       console.log()

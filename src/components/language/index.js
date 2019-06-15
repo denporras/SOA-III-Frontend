@@ -39,7 +39,19 @@ const strings = new LocalizedStrings({
     calendar: 'Calendar',
     start: 'Start: ',
     contact: 'Contact',
-    telephone: 'Telephone: '
+    telephone: 'Telephone: ',
+    posts: 'Posts',
+    toComment: 'Please rate us by logging in!',
+    opinions: 'Opinions',
+    comment: 'Comment:',
+    space: '  ',
+    err: 'Error:',
+    cantPublish: 'Cant publish post',
+    cantUpload: 'Cant upload image',
+    success: 'Success:',
+    published: 'The post is published',
+    publish: 'Publish',
+    rating: 'Rating'
   },
   es: {
     username: 'Usuario',
@@ -79,7 +91,19 @@ const strings = new LocalizedStrings({
     calendar: 'Calendario',
     start: 'Comienza: ',
     contact: 'Contacto',
-    telephone: 'Teléfono: '
+    telephone: 'Teléfono: ',
+    posts: 'Publicaciones',
+    toComment: '¡Por favor evalúenos iniciando sesión!',
+    opinions: 'Opiniones',
+    comment: 'Comentario:',
+    space: '  ',
+    err: 'Error:',
+    cantPublish: 'No se puede publicar',
+    cantUpload: 'No se puede subir imagen',
+    success: 'Éxito:',
+    published: 'Se ha publicado',
+    publish: 'Publicar',
+    rating: 'Calificación'
   }
 });
 export default strings;

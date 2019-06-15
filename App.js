@@ -13,6 +13,8 @@ import DetailActivityScreen from './src/screens/detail-activity'
 import CalendarScreen from './src/screens/calendar'
 import DetailCalendarScreen from './src/screens/detail-calendar'
 import ContactScreen from './src/screens/contact'
+import PostScreen from './src/screens/posts'
+import CameraScreen from './src/screens/camera'
 
 import { colors } from './src/styles'
 
@@ -33,6 +35,7 @@ const menu = createDrawerNavigator({
   Calendar: { screen: CalendarScreen },
   Contact: { screen: ContactScreen },
   Settings: { screen: SettingsScreen },
+  Posts: { screen: PostScreen }
 }, {
     drawerBackgroundColor: colors.primary2
   }
@@ -45,6 +48,7 @@ const App = createStackNavigator({
   ServiceDetail: { screen: DetailServiceScreen },
   ActivityDetail: { screen: DetailActivityScreen },
   CalendarDetail: { screen: DetailCalendarScreen },
+  Camera: { screen: CameraScreen },
   Main: {
     screen: menu,
     navigationOptions: {

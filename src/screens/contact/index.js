@@ -40,7 +40,7 @@ export default class ContactScreen extends React.Component {
   }
 
   componentDidMount() {
-    return fetch(`http://${global.ipAddress}:1337/${global.languageSelected}contacts/1`)
+    return fetch(`http://${global.ipAddress}:5000/${global.languageSelected}contacts`)
       .then((response) => response.json())
       .then((responseJson) => {
         this.setState({
